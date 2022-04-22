@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($municipios as $item)
+                @foreach ($municipio as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->nombre }}</td>
@@ -32,7 +32,7 @@
                             }
                             ?>
                         </td>
-                        <td>{{$item->id_departamento}}</td>
+                        <td>{{$item->departamento_id}}</td>
                         <td>
                             <form action="{{ route('municipios.destroy', $item->id) }}" method="POST">
                                 <a href="{{ route('municipios.edit', $item->id) }}" class="btn green darken-2">Editar</a>

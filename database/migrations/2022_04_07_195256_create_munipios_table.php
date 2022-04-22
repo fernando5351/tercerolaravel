@@ -18,8 +18,10 @@ class CreateMunipiosTable extends Migration
             $table->string('nombre');
             $table->string('codigo');
             $table->boolean('estado');
-            $table->integer('id_departamento');
+            $table->Integer('departamento_id');
             $table->timestamps();
+            // $table->foreign('departamento_id')->references('id')
+            //       ->on('departamentos');
         });
     }
 

@@ -7,11 +7,11 @@
     <form action="{{ route('municipios.store') }}">
         <div class="row">
             <div class="input-field col s12 l12">
-                <input type="text" name="nombre" placeholder="Ej: Sonsacate">
+                <input type="text" name="nombre" id="nombre" placeholder="Ej: Sonzacate">
                 <label for="nombre">Nombre del municipio:</label>
             </div>
             <div class="input-field col s12 l12">
-                <input type="number" name="codigo" placeholder="Ej: 380">
+                <input type="number" name="codigo" id="codigo" placeholder="Ej: 380">
                 <label for="codigo">Codigo:</label>
             </div>
         </div>
@@ -24,15 +24,13 @@
                 </select>
             </div>
             <div class="input-field col s6">
-                <select name="id_departamento">
-                    <option value="" disabled selected>Escoge tu departamento</option>
+                <select name="departamento_id" id="departamento_id">
+                    <option value="" disabled selected>Escoja su opcion</option>
                     @foreach ($departamentos as $departamento)
-                        <option value="{{ $departamento['id'] }}">{{ $departamento['nombre'] }}</option>
+                        <option value="{{ $departamento['id']}}">{{$departamento['nombre']}}</option>
                     @endforeach
                 </select>
             </div>
-        </div>
-        <div class="row" hidden>
         </div>
         <div class="row">
             <input type="submit" class="btn blue darken-2" value='ENVIAR'>

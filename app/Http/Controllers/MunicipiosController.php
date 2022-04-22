@@ -15,10 +15,10 @@ class MunicipiosController extends Controller
      */
     public function index()
     {
-        $municipios = Municipios::all();
-        $departamentos = Departamento::all();
-        dd($municipios);
-        return view('municipios.index', compact('municipios', 'departamentos'));
+        $municipio = Municipios::all();
+        $departamento = Departamento::all();
+        //dd($municipios, $departamentos);
+        return view('municipios.index', compact('municipio', 'departamento'));
     }
 
     /**
@@ -41,15 +41,14 @@ class MunicipiosController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request -> validate([
+        $validate = $request -> validate([
             'nombre' => 'required | max:50',
             'codigo' => 'required | max:4',
             'estado' => 'required | max:1',
-            'id_departamento' => 'required'
+            'departamento_id' => 'required'
         ]);
-        $show = Municipios::create($validateData);
-        $show = Departamento::create($validateData);
-        return redirect('/municipios') -> with('success', 'Municipios');
+        $show = Municipios::create($validate);
+        return redirect('/municipios') -> with('success', 'municipios');
     }
 
     /**

@@ -41,7 +41,7 @@ class DepartamentosController extends Controller
         $validateData = $request -> validate([
             'nombre' => 'required | max:50',
             'codigo' => 'required | max:4',
-            'estado' => 'required | max:1'
+            'estado' => 'required | max:2'
         ]);
         $show = Departamento::create($validateData);
         return redirect('/departamentos') -> with('success', 'Departamento');
