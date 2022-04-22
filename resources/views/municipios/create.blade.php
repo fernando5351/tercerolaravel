@@ -4,7 +4,8 @@
         <h2>CREAR UN MUNICIPIO</h2>
     </div>
     <div class="divider"></div>
-    <form action="{{ route('municipios.store') }}">
+    <form action="{{ route('municipios.store') }}" method="POST">
+        @csrf
         <div class="row">
             <div class="input-field col s12 l12">
                 <input type="text" name="nombre" id="nombre" placeholder="Ej: Sonzacate">

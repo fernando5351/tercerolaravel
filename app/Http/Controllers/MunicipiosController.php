@@ -30,7 +30,7 @@ class MunicipiosController extends Controller
     {
         $municipios = Municipios::all();
         $departamentos = Departamento::all();
-        return view('municipios.create', compact('municipios','departamentos'));
+        return view('/municipios.create', compact('municipios','departamentos'));
     }
 
     /**

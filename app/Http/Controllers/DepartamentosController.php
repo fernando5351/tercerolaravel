@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Departamento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use mysqli;
 
 class DepartamentosController extends Controller
 {
@@ -36,15 +37,25 @@ class DepartamentosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $departamentos)
     {
-        $validateData = $request -> validate([
-            'nombre' => 'required | max:50',
-            'codigo' => 'required | max:4',
-            'estado' => 'required | max:2'
-        ]);
-        $show = Departamento::create($validateData);
-        return redirect('/departamentos') -> with('success', 'Departamento');
+        $nombres = Departamento::nombre();
+        $nombre = mysqli_query($departamentos,"select nombre from municipios where nombre ='$nombres'");
+        if ($nombre == $nombres) {
+            echo '
+            <script>
+            alert("El departamento ya existe");
+            </script>
+            ';
+        }else {
+            $validateData = $request -> validate([
+                'nombre' => 'required | max:50',
+                'codigo' => 'required | max:4',
+                'estado' => 'required | max:2'
+            ]);
+            $show = Departamento::create($validateData);
+            return redirect('/departamentos') -> with('success', 'Departamento');
+        }
     }
 
     /**

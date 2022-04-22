@@ -12,7 +12,7 @@
                     <th>NOMBRE</th>
                     <th>CODIGO</th>
                     <th>ESTADO</th>
-                    <th>ID DEPARTAMENTO</th>
+                    <th>DEPARTAMENTO</th>
                     <th>ACCIONES</th>
                 </tr>
             </thead>
@@ -32,7 +32,15 @@
                             }
                             ?>
                         </td>
-                        <td>{{$item->departamento_id}}</td>
+                        <td>
+                        <?php
+                        if ($item->departamento_id == 1){
+                            echo "Sonsonate";
+                        }if ($item->departamento_id == 2){
+                            echo "";
+                        }
+                        ?>
+                        </td>
                         <td>
                             <form action="{{ route('municipios.destroy', $item->id) }}" method="POST">
                                 <a href="{{ route('municipios.edit', $item->id) }}" class="btn green darken-2">Editar</a>
